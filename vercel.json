@@ -1,5 +1,21 @@
 {
-    "framework": null,
-    "github": { "silent": true },
-    "routes": [{ "src": "/.*", "dest": "/api/vercel.js" }]
+  "builds": [
+    {
+      "src": "lib/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/lib/index.js"
+    }
+  ],
+  "functions": {
+    "lib/index.js": {
+      "runtime": "nodejs18.x",
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  }
 }
