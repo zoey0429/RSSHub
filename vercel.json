@@ -1,21 +1,16 @@
 {
-  "builds": [
-    {
-      "src": "lib/index.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/lib/index.js"
-    }
-  ],
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "lib/index.js": {
       "runtime": "nodejs18.x",
       "memory": 1024,
       "maxDuration": 30
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/lib/index.js"
+    }
+  ]
 }
